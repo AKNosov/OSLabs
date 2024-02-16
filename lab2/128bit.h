@@ -2,10 +2,10 @@
 void print(int128_t num)
 {
     printf("DEC: \n");
-    char array[DEC_SIZE + 1]; //создаем массив размером десятиричного числа
+    char array[DEC_SIZE + 1];
     int i;
     for (i = 0; i < DEC_SIZE; ++i) {
-        array[i] = '0'; //заполняем нулями массив
+        array[i] = '0'; 
     }
     array[DEC_SIZE] = TERMINAL_NULL;
     for (i = DEC_SIZE - 1; num > 0; --i) {
@@ -17,11 +17,10 @@ void print(int128_t num)
 
 int number_checker(char *s)
 {
-    return (*s >= '0' && *s <= '9'); //1, если цифра, 0, если нет
+    return (*s >= '0' && *s <= '9'); 
 }
 
-int hexdexconvert(char *s) //вспомогательная функция
-{
+int hexdexconvert(char *s) {
     if(*s == 'a')
         return 10;
     if(*s == 'b')

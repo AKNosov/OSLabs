@@ -34,7 +34,7 @@ void generate()
             }
         }
         write(fd, &array, NUMBER_SIZE);
-        write(fd, "\n", 1); //пишем в файле перевод строки
+        write(fd, "\n", 1); 
     }
     close(fd);
 }

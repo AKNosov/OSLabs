@@ -1,3 +1,5 @@
+#ifndef SUM_H
+#define SUM_H
 
 const int max_buffer_size = 128;
 const int count_semafore = 3;
@@ -25,3 +27,4 @@ int create_processe(){
     }
     return pid;
 };
+#endif

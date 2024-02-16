@@ -1,6 +1,7 @@
 {
     "files.associations": {
         "wait.h": "c",
-        "generator.h": "c"
+        "generator.h": "c",
+        "stdio.h": "c"
     }
 }
