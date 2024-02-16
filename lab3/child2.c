@@ -1,5 +1,4 @@
 #include "create_processe.h"
-#include "constants.h"
 
 
 sem_t* child_list_semafor[2];

@@ -1,21 +1,5 @@
-#include <stdio.h>
-#include <unistd.h>
-#include <limits.h>
-#include <stdlib.h>
-#include <time.h>
-#include <pthread.h>
-#include <ctype.h>
-#include <sys/stat.h>
-#include <fcntl.h>
-#include <inttypes.h>
-#include <string.h>
-#define DEC_SIZE 40
-#define NUMBER_SIZE 32
-#define FILE_SIZE 100
-#define TERMINAL_NULL '\0'
-typedef unsigned __int128 int128_t;
-char *file_name = "file.txt";
-
+#include "generator.h"
+#include "128bit.h"
 struct Command {
     int memory;
     int number_of_threads;
@@ -51,78 +35,6 @@ void parse_command_line(int argc, char* argv[], struct Command *command)
     }
     command->number_of_threads = atoi(argv[1]);
     command->memory = atoi(argv[2]);
-}
-
-void generate()
-{
-    int fd = open(file_name, O_RDWR| O_CREAT, 0666);
-    char array[NUMBER_SIZE];
-    srand(time(NULL)); 
-    for (int i = 0; i < FILE_SIZE; ++i) {
-        for (int i = 0; i < NUMBER_SIZE; ++i) {
-            if (((int) rand()) % 2 == 0) {
-                array[i] = '0' + (((int) rand()) % 10);
-            } else {
-                array[i] = 'A' + (((int) rand()) % 6);
-            }
-        }
-        write(fd, &array, NUMBER_SIZE);
-        write(fd, "\n", 1); //пишем в файле перевод строки
-    }
-    close(fd);
-}
-
-void print(int128_t num)
-{
-    printf("DEC: \n");
-    char array[DEC_SIZE + 1]; //создаем массив размером десятиричного числа
-    int i;
-    for (i = 0; i < DEC_SIZE; ++i) {
-        array[i] = '0'; //заполняем нулями массив
-    }
-    array[DEC_SIZE] = TERMINAL_NULL;
-    for (i = DEC_SIZE - 1; num > 0; --i) {
-        array[i] = (int) (num % 10) + '0'; //представляем в коде аски и заполняем массив с конца
-        num /= 10;
-    }
-        printf("%s\n", &array[i + 1]); 
-}
-
-int number_checker(char *s)
-{
-    return (*s >= '0' && *s <= '9'); //1, если цифра, 0, если нет
-}
-
-int hexdexconvert(char *s) //вспомогательная функция
-{
-    if(*s == 'a')
-        return 10;
-    if(*s == 'b')
-        return 11;
-    if(*s == 'c')
-        return 12;
-    if(*s == 'd')
-        return 13;
-    if(*s == 'e')
-        return 14;
-    if(*s == 'f')
-        return 15;
-    return 0;
-}
-
-int128_t to128bit(char *s) 
-{
-    int128_t num = 0;
-    while (*s) {
-        if (number_checker(s))
-            num = num * 16 + (*s - '0');
-        else {
-            int b = hexdexconvert(s);
-            num = num * 16 + b;
-        }
-        ++s; 
-    }
-    return num;
 }
 
 void *thread_function(void *a)
