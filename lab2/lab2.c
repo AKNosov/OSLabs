@@ -50,7 +50,7 @@ void print(int128_t num)
     }
     array[DEC_SIZE] = TERMINAL_NULL;
     for (i = DEC_SIZE - 1; num > 0; --i) {
-        array[i] = (int) (num % 10) + '0'; //представляем в коде аски и заполняем массив с конца
+        array[i] = (int) (num % 10) + '0'; 
         num /= 10;
     }
         printf("%s\n", &array[i + 1]); 
