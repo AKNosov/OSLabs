@@ -1,4 +1,0 @@
-/home/alex/Desktop/OSLabs/lab5-7/build/CMakeFiles/control.dir
-/home/alex/Desktop/OSLabs/lab5-7/build/CMakeFiles/calc.dir
-/home/alex/Desktop/OSLabs/lab5-7/build/CMakeFiles/edit_cache.dir
-/home/alex/Desktop/OSLabs/lab5-7/build/CMakeFiles/rebuild_cache.dir

@@ -1,1 +1,0 @@
-/usr/bin/c++ CMakeFiles/control.dir/control.cpp.o -o control  /usr/lib/x86_64-linux-gnu/libzmq.so 
